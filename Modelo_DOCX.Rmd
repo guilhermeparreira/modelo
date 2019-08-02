@@ -1,0 +1,60 @@
+---
+title: "test-report.Rmd"
+author: "Guilherme"
+date: "9 de maio de 2018"
+output: 
+  word_document:
+    reference_docx: "../common/Modelo_DOCX_reference_01.docx"
+    fig_caption: TRUE
+    toc: TRUE
+    toc_depth: 4
+    
+# bibliography: /home/guilherme/Google Drive/Analises/Modelo/referencias.bib
+# csl: /home/guilherme/Google Drive/Analises/Modelo/stilo_biblio.csl
+bibliography: C:/Users/Windows/Documents/Analises/Modelo/referencias.bib
+csl: C:/Users/Windows/Documents/Analises/Modelo/stilo_biblio.csl
+---
+
+```{r}
+library(pander)
+panderOptions('table.alignment.default', function(df)
+    ifelse(sapply(df, is.numeric), 'center', 'left'))
+panderOptions('table.split.table', Inf)
+panderOptions('big.mark', ".")
+panderOptions('keep.trailing.zeros', TRUE)
+panderOptions('decimal.mark', ",")
+panderOptions('table.alignment.rownames', "left")
+```
+
+# Heading 1
+
+Hoje vou falar sobre não paramétrica [@naoparametrica]
+## Heading 2
+
+And I have this next subsection
+
+# Make a table
+
+Create a subset of the mtcars data
+
+<br>
+
+```{r}
+mtcars[1:5, 5:9]
+```
+
+Then use `knitr::kable()` to create the table
+
+<br>
+
+```{r}
+knitr::kable(mtcars[1:5, 5:9], digits = 1, caption = "Titulo")
+```
+
+
+
+```{r}
+pander(mtcars[1:5, 5:9], caption = "Titulo")
+```
+
+### Referências

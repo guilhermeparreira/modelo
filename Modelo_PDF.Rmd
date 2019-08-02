@@ -1,0 +1,94 @@
+---
+title: "Análise Estatística"
+subtitle: "Pesquisador (a):"
+author:
+- '[GP Soluções em Estatística](https://www.facebook.com/gpsolucoesemestatistica)'
+- 'Responsável: [Guilherme Parreira da Silva](http://lattes.cnpq.br/7353800201695627)'
+date: "Data da entrega: `r format( Sys.Date(), '%d/%m/%Y' ) `"
+lang: pt-BR
+linkcolor: blue
+urcolor: blue
+citecolor: blue
+lof: true
+lot: true
+header-includes:
+  - \usepackage{float} # colocar as figuras na posição que eu quero
+  - \usepackage{fancyhdr} # adiciona a logo
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    df_print: kable
+    keep_tex: FALSE
+bibliography: /home/guilherme/Google Drive/Analises/Modelo/referencias.bib
+csl: /home/guilherme/Google Drive/Analises/Modelo/stilo_biblio.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- Adiciona a logo: -->
+  \addtolength{\headheight}{2.0cm}
+\pagestyle{fancyplain}
+\rhead{\includegraphics[height=3.5cm]{/home/guilherme/Google Drive/Marca/material.grafico/logo_completasemfundo.png}}
+\renewcommand{\headrulewidth}{0pt}
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(
+    fig.pos = 'H',
+    dev = "png", # Escolha o formato da figura a ser salvo
+    fig.path = "graficos/",
+    dpi = 100,
+    fig.align = "center",
+    fig.show = "asis", # hold
+    tidy = FALSE, 
+    results = "markup", # hold
+    comment = NA,
+    warning = FALSE,
+    cache = TRUE,
+    echo = TRUE, # Coloca as figuras nas posição juntamente com o pacote; sem o pacote e 'h' minúsculo, que é a opção mais trivial, não funcionax
+    message = FALSE)
+options(width = 1000)
+options(knitr.duplicate.label = 'allow')
+#Opção global de chunck
+options(scipen = 4, digits = 5) # Isso fala que, o inline terão 5 dígitos e não será
+# options(table_counter = TRUE, width = 10000)
+# options(figure_counter = TRUE, width = 10000)
+```
+
+```{r sourcecodermd, include=FALSE}
+# source("/home/guilherme/Google Drive/Analises/Modelo/Funcoes.R")
+# setwd("/home/guilherme/Google Drive/Analises/Rozane")
+# pkg <- c("readxl","htmlTable", "captioner", "ggplot2", "reshape2")
+# sapply(pkg, require, character.only = TRUE)
+# theme_set(theme_bw() + theme(legend.position = "bottom", legend.title = element_blank()))
+# data <- read_excel("sd.xlsx", sheet = 1)
+```
+
+\newpage
+
+# Gráfico 1
+```{r, fig.cap="\\label{fig:Bar1}Volume de produção por fábrica em R\\$ "}
+with(mtcars, plot(mpg ~ cyl))
+```
+
+A \autoref{fig:Bar1} é o gráfico de dispersão.
+
+\newpage
+
+# Tabela
+
+```{r}
+knitr::kable(mtcars,
+      caption = "Conjunto de dados\\label{tab:tab1}")
+```
+
+A \autoref{tab:tab1} é a tabela.
+
+
+# Realização
+[![](/home/guilherme/Google Drive/Marca/material.grafico/logo_completasemfundo_pequena.png)](https://www.facebook.com/gpsolucoesemestatistica/)
+
+# Referências

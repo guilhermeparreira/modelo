@@ -1,0 +1,54 @@
+---
+title: "Análise XXXXXX"
+author: '[Guilherme Parreira da Silva](http://lattes.cnpq.br/7353800201695627)'
+date: "Última atualização: `r format( Sys.Date(), '%d/%m/%Y' ) `"
+lang: pt-BR
+output:
+  html_document:
+    css: /home/guilherme/Google Drive/Analises/Modelo/markdown7.css
+    fig_caption: yes
+    number_sections: yes
+    theme: default
+    toc: yes
+    toc_depth: 4
+  word_document:
+    toc: yes
+    toc_depth: '4'
+bibliography: /home/guilherme/Google Drive/Analises/Modelo/referencias.bib
+csl: /home/guilherme/Google Drive/Analises/Modelo/stilo_biblio.csl
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(
+    tidy = FALSE, 
+    results = "markup", # hold
+    fig.path = "graficos/",
+    dpi = 100,
+    fig.align = "center",
+    fig.show = "asis", # hold
+    comment = NA,
+    warning = FALSE,
+    cache = TRUE,
+    echo = FALSE)
+options(width = 1000)
+options(knitr.duplicate.label = 'allow')
+#Opção global de chunck
+options(scipen = 4, digits = 5) # Isso fala que, o inline terão 5 dígitos e não será
+options(table_counter = TRUE, width = 10000)
+options(figure_counter = TRUE, width = 10000)
+```
+
+```{r sourcecodermd, include=FALSE}
+source_rmd <- function(file, local = FALSE, ...){
+  options(knitr.duplicate.label = 'allow')
+
+  tempR <- tempfile(tmpdir = ".", fileext = ".R")
+  on.exit(unlink(tempR))
+  knitr::purl(file, output = tempR, quiet = TRUE)
+
+  envir <- globalenv()
+  source(tempR, local = envir, ...)
+}
+#source_rmd("/home/guilherme/Google Drive/Analises/Modelo/Modelo.Rmd") Carrega outro arquivo em Rmd
+```

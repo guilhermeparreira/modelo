@@ -1,0 +1,74 @@
+---
+title: "Análise XXXXXX"
+subtitle: "Pesquisadora"
+author: '[Guilherme Parreira da Silva](http://lattes.cnpq.br/7353800201695627)'
+date: "Data da entrega: `r format( Sys.Date(), '%d/%m/%Y' ) `"
+lang: pt-BR
+output:
+  html_document:
+    css: /home/guilherme/Google Drive/Analises/Modelo/markdown7.css
+    # css: C:/Users/Windows/Documents/Analises/Modelo/markdown7.css
+    fig_caption: yes
+    number_sections: yes
+    theme: default
+    toc: yes
+    toc_depth: 4
+# bibliography: C:/Users/Windows/Documents/Analises/Modelo/referencias.bib
+# csl: C:/Users/Windows/Documents/Analises/Modelo/stilo_biblio.csl
+bibliography: /home/guilherme/Google Drive/Analises/Modelo/referencias.bib
+csl: /home/guilherme/Google Drive/Analises/Modelo/stilo_biblio.csl
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(
+    tidy = FALSE, 
+    results = "markup", # hold
+    fig.path = "graficos/",
+    dpi = 100,
+    fig.align = "center",
+    fig.show = "asis", # hold
+    comment = NA,
+    warning = FALSE,
+    cache = TRUE,
+    echo = FALSE,
+    message = FALSE)
+options(width = 1000)
+#Opção global de chunck
+options(scipen = 4, digits = 5) # Isso fala que, o inline terão 5 dígitos e não será
+options(table_counter = TRUE, width = 10000)
+options(figure_counter = TRUE, width = 10000)
+```
+
+<img src="/home/guilherme/Google Drive/Marca/material.grafico/logo_html.png" 
+style="position:absolute;top:60px;right:300px;" />
+
+# Metodologia
+
+O software utilizado para desenvolver a análise foi o R [@r].
+
+```{r sourcecodermd, include=FALSE}
+source("/home/guilherme/Google Drive/Analises/Modelo/Funcoes.R")
+setwd("/home/guilherme/Google Drive/Analises/")
+pkg <- c("readxl","htmlTable", "captioner", "ggplot2", "reshape2")
+sapply(pkg, require, character.only = TRUE)
+sapply(pkg[sapply(pkg, require, character.only = TRUE)==FALSE], install.packages, dependecies = T)
+sapply(pkg, install.packages, dependecies = TRUE)
+theme_set(theme_bw() + theme(legend.position = "bottom", legend.title = element_blank()))
+figs <- captioner::captioner(prefix = "Figura")
+tabs <- captioner::captioner(prefix = "Tabela")
+#data <- read_excel("Planilha dados coletado. SAQ. 10-12. completa.xlsx",sheet = 1)
+#fa <- function(x) iconv(x, to = "ASCII//TRANSLIT")
+#names(data) <- tolower(fa(names(data)))
+```
+
+```{r, fig.width=18, fig.height=6, fig.cap=cap}
+cap <- figs(8, "Percentual de respostas para as questões da Seção G: à esquerda é representada as resposta para UBS, e à direita para a ESF")
+plot(1:10)
+```
+A `r figs(8, display = "cite")`.
+
+# Realização
+[![](/home/guilherme/Google Drive/Marca/material.grafico/logo_completasemfundo_pequena.png)](http://gpestatistica.netlify.com/)
+
+# Referências
